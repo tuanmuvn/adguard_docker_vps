@@ -6,7 +6,7 @@ DOMAIN_PORTAINER="portainer.example.com" # ⚠️ Đổi thành domain cho Porta
 INSTALL_DIR="/opt/adguard"
 ADGUARD_PORT=8080
 # URL đến file whitelist của bạn trên GitHub (dạng raw)
-WHITELIST_URL="https://raw.githubusercontent.com/user/repo/main/whitelist_ip.txt" # ⚠️ ĐỔI THÀNH URL CỦA BẠN
+WHITELIST_URL="https://raw.githubusercontent.com/tuanmuvn/adguard_docker_vps/refs/heads/main/whitelist_ip.txt" # ⚠️ ĐỔI THÀNH URL CỦA BẠN
 # === CÀI ĐẶT DOCKER & DOCKER COMPOSE ===
 echo "👉 Đang cài Docker..."
 apt update && apt install -y ca-certificates curl gnupg lsb-release
