@@ -1,13 +1,13 @@
 # Script Tự Động Cài Đặt AdGuard Home & Portainer với SSL và Tường Lửa
 
 <p align="center">
-  <img src="https://github.com/AdguardTeam/AdGuardHome/raw/master/doc/adguard_home_lightmode.svg" alt="AdGuard Home logo" width="100"/>
+  <img src="https://github.com/AdguardTeam/AdGuardHome/raw/master/doc/adguard_home_lightmode.svg" alt="AdGuard Home logo" width="150px" style="visibility:visible;max-width:100%;"/>
      
   <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker logo" width="120"/>
      
-  <img src="https://caddyserver.com/resources/images/logo-dark.svg" alt="Caddy logo" width="100"/>
+  <img src="https://dqah5woojdp50.cloudfront.net/original/2X/d/d2493a68c9cbaf275d9ac596dca4521c514f0c3e.png" alt="Caddy logo" width="150px" style="visibility:visible;max-width:100%;"/>
      
-  <img src="https://www.portainer.io/hubfs/portainer-logo-black.svg" alt="Portainer logo" width="120"/>
+  <img src="https://www.portainer.io/hubfs/portainer-logo-black.svg" alt="Portainer logo" width="150px" style="visibility:visible;max-width:100%;"/>
 </p>
 
 Script này tự động hóa 100% quá trình cài đặt và cấu hình một bộ dịch vụ mạnh mẽ trên máy chủ Debian/Ubuntu, giúp bạn thiết lập một môi trường an toàn và dễ quản lý chỉ trong vài phút.
