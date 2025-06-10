@@ -1,13 +1,13 @@
 # Script Tự Động Cài Đặt AdGuard Home & Portainer với SSL và Tường Lửa
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/internal/home/logo.svg" alt="AdGuard Home logo" width="100"/>
+  <img src="https://github.com/AdguardTeam/AdGuardHome/raw/master/doc/adguard_home_lightmode.svg" alt="AdGuard Home logo" width="100"/>
      
   <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker logo" width="120"/>
      
-  <img src="https://caddyserver.com/resources/images/caddy-logo-fullscreen.svg" alt="Caddy logo" width="100"/>
+  <img src="https://caddyserver.com/resources/images/logo-dark.svg" alt="Caddy logo" width="100"/>
      
-  <img src="https://www.portainer.io/hubfs/Brand%20Assets/Portainer%20Logo/Portainer-Logo-Blue.png" alt="Portainer logo" width="120"/>
+  <img src="https://www.portainer.io/hubfs/portainer-logo-black.svg" alt="Portainer logo" width="120"/>
 </p>
 
 Script này tự động hóa 100% quá trình cài đặt và cấu hình một bộ dịch vụ mạnh mẽ trên máy chủ Debian/Ubuntu, giúp bạn thiết lập một môi trường an toàn và dễ quản lý chỉ trong vài phút.
@@ -25,7 +25,7 @@ Trước khi chạy script, vui lòng đảm bảo bạn đã chuẩn bị đầ
 
 1.  **VPS**: Một máy chủ ảo đang chạy hệ điều hành **Debian (11, 12)** hoặc **Ubuntu (20.04, 22.04)**.
 2.  **Tên miền**: Hai (2) tên miền hoặc tên miền phụ (subdomain) đã được trỏ **bản ghi A** về địa chỉ IP của VPS.
-    -   *Ví dụ*: `adg.vidu.com` -> `192.0.2.1` và `docker.vidu.com` -> `192.0.2.1`.
+    -   *Ví dụ*: `adg.example.com` -> `192.0.2.1` và `docker.example.com` -> `192.0.2.1`.
 3.  **File Whitelist IP**:
     -   Bạn cần có một file `whitelist_ip.txt` được lưu trên một kho lưu trữ GitHub.
     -   **QUAN TRỌNG NHẤT**: File này **phải chứa địa chỉ IP public của bạn** (mạng bạn đang dùng để SSH vào VPS). Nếu không, bạn sẽ bị khóa khỏi VPS.
@@ -44,50 +44,49 @@ Script này cần được chạy với quyền quản trị (`root` hoặc `sud
 Đăng nhập vào VPS và chạy lệnh sau:
 
 ```bash
-sudo bash <(curl -sSL https://raw.githubusercontent.com/TEN_CUA_BAN/TEN_REPO/main/setup-adguard-ssl.sh)
+sudo bash <(curl -sSL https://raw.githubusercontent.com/tuanmuvn/adguard_docker_vps/refs/heads/main/setup-adguard-docker.sh)
 ```
-Ghi chú: Hãy thay thế https://raw.githubusercontent.com/TEN_CUA_BAN/TEN_REPO/main/setup-adguard-ssl.sh bằng đường dẫn Raw chính xác đến file script của bạn trên GitHub.
+Ghi chú: Hãy thay thế `https://raw.githubusercontent.com/tuanmuvn/adguard_docker_vps/refs/heads/main/setup-adguard-docker.sh` bằng đường dẫn Raw chính xác đến file script của bạn trên GitHub.
 ### ➡️ Cách 2: Cài Đặt An Toàn (Từng bước)
 Cách này cho phép bạn tải script về, tự mình kiểm tra lại nội dung trước khi thực thi.
 #### Bước 1: Tải script về máy chủ
 ```bash
-curl -sSLO https://raw.githubusercontent.com/TEN_CUA_BAN/TEN_REPO/main/setup-adguard-ssl.sh
+curl -sSLO https://raw.githubusercontent.com/tuanmuvn/adguard_docker_vps/refs/heads/main/setup-adguard-docker.sh
 ```
 #### Bước 2: (Tùy chọn) Xem lại nội dung script để đảm bảo an toàn
 ```bash
-cat setup-adguard-ssl.sh
+cat setup-adguard-docker.sh
 ```
 #### Bước 3: Cấp quyền thực thi cho file
 ```bash
-chmod +x setup-adguard-ssl.sh
+chmod +x setup-adguard-docker.sh
 ```
 #### Bước 4: Chạy script với quyền **sudo**
 ```bash
-sudo ./setup-adguard-ssl.sh
+sudo ./setup-adguard-docker.sh
 ```
 ## 🛠️ Cấu Hình Sau Khi Cài Đặt
 Khi script chạy xong, các dịch vụ đã hoạt động. Bạn cần thực hiện cấu hình lần đầu:
 ### 1. Cấu hình AdGuard Home:
-Mở trình duyệt, truy cập: http://<IP-CUA-VPS>:8080
+Mở trình duyệt, truy cập: `http://<IP-CUA-VPS>:8080`
 Làm theo hướng dẫn trên màn hình để thiết lập tài khoản quản trị và mật khẩu.
 ### 2. Truy cập các dịch vụ qua tên miền an toàn (HTTPS):
 Sau khi cấu hình xong, bạn có thể truy cập các dịch vụ bằng tên miền đã thiết lập trong script.
-AdGuard Home: https://adg.vidu.com
-Portainer: https://docker.vidu.com (tạo tài khoản quản trị ở lần truy cập đầu tiên)
+- **AdGuard Home:** `https://adg.example.com`
+- Giao diện nội bộ: `http://[IP-VPS]:8080` (AdGuard lần đầu cấu hình) 
+- **Portainer:** `https://docker.example.com` (tạo tài khoản quản trị ở lần truy cập đầu tiên)
+- Portainer nội bộ:| `http://[IP-VPS]:9000` (không SSL, nội bộ) 
 ### 🛡️ Cập Nhật Danh Sách IP Cho Phép (Whitelist)
-Khi IP của bạn thay đổi, bạn cần cập nhật lại tường lửa.
-Sửa file: Vào kho lưu trữ GitHub của bạn và cập nhật file whitelist_ip.txt.
-Chạy lại lệnh cấu hình tường lửa: Đăng nhập vào VPS và chạy một script nhỏ sau để áp dụng thay đổi.
+- Khi IP của bạn thay đổi, bạn cần cập nhật lại tường lửa.
+- Sửa file: Vào kho lưu trữ GitHub của bạn và cập nhật file whitelist_ip.txt.
+- Chạy lại lệnh cấu hình tường lửa: Đăng nhập vào VPS và chạy một script nhỏ sau để áp dụng thay đổi.
 ```bash
 # Di chuyển đến thư mục cài đặt
 cd /opt/adguard
-
 # Lấy URL Raw của file whitelist từ script
 WHITELIST_URL=$(grep 'WHITELIST_URL=' setup-adguard-ssl.sh | cut -d'"' -f2)
-
 # Tải lại file whitelist mới
 curl -fsSL "$WHITELIST_URL" -o whitelist_ip.txt
-
 # Đặt lại và áp dụng lại quy tắc tường lửa
 echo "Dang ap dung lai cac quy tac tuong lua..."
 sudo ufw --force reset
@@ -100,4 +99,4 @@ yes | sudo ufw enable
 echo "Hoan tat! Kiem tra trang thai:"
 sudo ufw status verbose
 ```
-Cảnh báo: Luôn đảm bảo IP hiện tại của bạn đã có trong file whitelist_ip.txt trên GitHub TRƯỚC KHI chạy lệnh cập nhật để không tự khóa mình. Nếu không may bị khóa, hãy sử dụng Recovery Console (hoặc Web Console) từ nhà cung cấp VPS để đăng nhập và chạy lệnh sudo ufw disable.
+Cảnh báo: Luôn đảm bảo IP hiện tại của bạn đã có trong file `whitelist_ip.txt` trên **GitHub** TRƯỚC KHI chạy lệnh cập nhật để không tự khóa mình. Nếu không may bị khóa, hãy sử dụng **Recovery Console (hoặc Web Console)** từ nhà cung cấp **VPS** để đăng nhập và chạy lệnh `sudo ufw disable`.
