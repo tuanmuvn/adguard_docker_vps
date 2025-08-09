@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # === THÔNG SỐ TÙY CHỈNH ===
-DOMAIN_ADGUARD="adg.example.com"         # ⚠️ Đổi thành domain bạn muốn trỏ về AdGuard
-DOMAIN_PORTAINER="portainer.example.com" # ⚠️ Đổi thành domain cho Portainer
+DOMAIN_ADGUARD="ad.tuanmu.net"         # ⚠️ Đổi thành domain bạn muốn trỏ về AdGuard
+DOMAIN_PORTAINER="po.tuanmu.net" # ⚠️ Đổi thành domain cho Portainer
 INSTALL_DIR="/opt/adguard"
 ADGUARD_PORT=8080
 # URL đến file whitelist của bạn trên GitHub (dạng raw)
